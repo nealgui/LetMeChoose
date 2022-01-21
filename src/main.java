@@ -17,16 +17,33 @@ public class main {
 		input = getItem.nextLine();
 		
 		while (!"q".equals(input)) {
-			items.add(input);
-			System.out.println("Added " +input);
-			System.out.println("Any more items? (or q to quit)");
-			input = getItem.nextLine();
+			
+			if (!input.isEmpty()) {
+				items.add(input);
+				System.out.println("Added " +input);
+				System.out.println("Any more items? (or q to quit)");
+			}
+			else {
+				System.out.println("Please enter something. (or q to quit)");
+			}
+				input = getItem.nextLine();	
+			
+			
 		}
 		getItem.close();
 		
-		randNum = (int)(Math.random() * items.size());
-		result = items.get(randNum);
-		System.out.println("Okay, looks like we're going with " +result);
+		if (items.size() > 0) {
+			System.out.println("\nChoosing an item...\n");
+			randNum = (int)(Math.random() * items.size());
+			result = items.get(randNum);
+			System.out.println("Okay, looks like we're going with " +result);
+		}
+		else {
+			System.out.println("You haven't entered any items. Please try again.");
+		}
+		
+		System.out.println("\nEnd of program.");
+		
 	}
 
 }
